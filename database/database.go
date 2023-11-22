@@ -17,7 +17,7 @@ type DbInstance struct {
 var Database DbInstance
 
 func ConnectDb() {
-	dsn := "admin:password@tcp(172.20.0.2:3306)/nemesis?charset=utf8mb4&parseTime=True&loc=Local"
+	dsn := "root:password@tcp(172.20.0.2:3306)/nemesis?charset=utf8mb4&parseTime=True&loc=Local"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 
 	if err != nil {
@@ -30,7 +30,7 @@ func ConnectDb() {
 	db.Logger = logger.Default.LogMode(logger.Info)
 	log.Println("Running migrations")
 
-	db.AutoMigrate(&models.Organization{})
+	db.AutoMigrate(&models.Organizations{}, &models.Networks{})
 
 	Database = DbInstance{Db: db}
 

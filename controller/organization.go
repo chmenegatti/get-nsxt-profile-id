@@ -8,13 +8,13 @@ import (
 )
 
 func CreateOrganization(c *fiber.Ctx) error {
-	var organization models.Organization
+	var organization models.Organizations
 
 	if err := c.BodyParser(&organization); err != nil {
 		return c.Status(400).JSON(err.Error())
 	}
 
-	database.Database.Db.Create(&organization)
+	database.Database.Db.Save(&organization)
 
 	responseOrganization := iresponse.CreateResponse(organization)
 

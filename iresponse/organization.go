@@ -21,7 +21,7 @@ type Organization struct {
 	Status                  string `json:"status"`
 }
 
-func CreateResponse(organization models.Organization) Organization {
+func CreateResponse(organization models.Organizations) Organization {
 	return Organization{Id: organization.Id, Name: organization.Name, Description: organization.Description,
 		TierProvider: organization.TierProvider, EdgeCluster: organization.EdgeCluster, TierProviderID: organization.TierProvider,
 		Tier1GatewayID: organization.Tier1GatewayID, PolicyID: organization.PolicyID, LocaleServiceID: organization.LocaleServiceID,
